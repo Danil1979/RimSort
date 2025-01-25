@@ -68,6 +68,7 @@ class Settings(QObject):
         self.duplicate_mods_warning: bool = False
         self.steam_mods_update_check: bool = False
         self.try_download_missing_mods: bool = False
+        self.current_language : str = "en"
 
         self.github_username: str = ""
         self.github_token: str = ""

@@ -706,6 +706,11 @@ class SettingsDialog(QDialog):
         )
         group_layout.addWidget(self.download_missing_mods_checkbox)
 
+        self.current_language = QComboBox()
+        language_options = ["en", "zh"]
+        self.current_language.addItems(language_options)
+        group_layout.addWidget(self.current_language)
+
         github_identity_group = QGroupBox()
         tab_layout.addWidget(github_identity_group)
 

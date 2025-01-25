@@ -2070,9 +2070,8 @@ class ModsPanel(QWidget):
         self.active_mods_search_filter = QComboBox()
         self.active_mods_search_filter.setObjectName("MainUI")
         self.active_mods_search_filter.setMaximumWidth(125)
-        current_language : str = 'zh'
         search_filter_name = ["name", "packageId", "authors", "publishedFileId"]
-        search_filter_name = [translate(field, current_language) for field in search_filter_name]
+        search_filter_name = [translate(field) for field in search_filter_name]
         self.active_mods_search_filter.addItems(
             search_filter_name
         )
@@ -2332,13 +2331,13 @@ class ModsPanel(QWidget):
             raise NotImplementedError(f"Unknown list type: {list_type}")
         # Evaluate the search filter state for the list
         search_filter = None
-        if _filter.currentText() == translate("name", 'zh'):
+        if _filter.currentText() == translate("name"):
             search_filter = "name"
-        elif _filter.currentText() == translate("packageId", 'zh'):
+        elif _filter.currentText() == translate("packageId"):
             search_filter = "packageid"
-        elif _filter.currentText() == translate("authors", 'zh'):
+        elif _filter.currentText() == translate("authors"):
             search_filter = "authors"
-        elif _filter.currentText() == translate("publishedFileId", 'zh'):
+        elif _filter.currentText() == translate("publishedFileId"):
             search_filter = "publishedfileid"
         # Filter the list using any search and filter state
         for uuid in uuids:

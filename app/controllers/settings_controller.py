@@ -13,7 +13,7 @@ from app.utils.generic import platform_specific_open
 from app.utils.system_info import SystemInfo
 from app.views.dialogue import show_dialogue_confirmation, show_dialogue_file
 from app.views.settings_dialog import SettingsDialog
-
+from app.utils.localization import set_language
 
 class SettingsController(QObject):
     """
@@ -496,6 +496,7 @@ class SettingsController(QObject):
         self.settings_dialog.download_missing_mods_checkbox.setChecked(
             self.settings.try_download_missing_mods
         )
+        self.settings_dialog.current_language.setCurrentText(self.settings.current_language)
         self.settings_dialog.github_username.setText(self.settings.github_username)
         self.settings_dialog.github_username.setCursorPosition(0)
         self.settings_dialog.github_token.setText(self.settings.github_token)
@@ -630,6 +631,8 @@ class SettingsController(QObject):
         self.settings.try_download_missing_mods = (
             self.settings_dialog.download_missing_mods_checkbox.isChecked()
         )
+        self.settings.current_language = self.settings_dialog.current_language.currentText()
+        # set_language(self.settings.current_language)
         self.settings.github_username = self.settings_dialog.github_username.text()
         self.settings.github_token = self.settings_dialog.github_token.text()
         run_args_str = ",".join(
